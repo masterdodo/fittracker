@@ -1,0 +1,544 @@
+body {
+    margin: 0;
+    background-color: #f8dd74;
+    background-image: url("https://www.transparenttextures.com/patterns/concrete-wall.png");
+    font-family: "Archivo", sans-serif;
+}
+
+nav {
+    padding-top: 20px;
+    padding-bottom: 7px;
+    background-color: #edcf58;
+    background-image: url("https://www.transparenttextures.com/patterns/egg-shell.png");
+    color: #5c6f68;
+    margin: 0;
+    margin-bottom: 20px;
+    border-radius: 10px 10px 142px 10px;
+    box-shadow: 6px 0px 73px -16px rgba(0, 0, 0, 0.63);
+    grid-area: nav;
+}
+
+h1 {
+    margin: 0;
+    text-align: center;
+    font-size: 40px;
+}
+
+h2 {
+    color: rgb(83, 83, 83);
+    padding: 5px;
+}
+
+a {
+    color: #333;
+}
+
+a:hover {
+    color: lightseagreen;
+}
+
+#routines {
+    grid-area: routines;
+}
+
+#activities {
+    grid-area: activities;
+}
+
+.top-link {
+    transition: all 0.1s ease-in-out;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: inline-flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    margin: 0 1em 1em 0;
+    border-radius: 50%;
+    padding: 0.1em;
+    width: 40px;
+    height: 40px;
+    background-color: #c2c2c288;
+    z-index: 3;
+}
+
+.top-link.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.top-link.hide {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.top-link svg {
+    fill: #000;
+    width: 24px;
+    height: 12px;
+}
+
+.btn {
+    background-color: rgba(175, 175, 175, 0.26);
+    backdrop-filter: blur(10px);
+    border: none;
+    border-radius: 10px;
+    color: #303633;
+    padding: 12px 16px;
+    font-size: 16px;
+    margin: 3px;
+    transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.btn:hover {
+    backdrop-filter: none;
+    background-color: rgba(46, 201, 199, 0.624);
+}
+
+.btn-clear {
+    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+    color: #303633;
+    padding: 5px;
+    font-size: 20px;
+    margin: 3px;
+    transition: all 0.3s ease;
+}
+
+.btn-clear:hover {
+    background-color: white;
+}
+
+.hidden {
+    display: none;
+}
+
+.txt-red {
+    color: red;
+}
+
+.btn-red {
+    color: red;
+}
+
+.btn-red:hover {
+    background-color: red;
+    color: white;
+}
+
+.btn-blue {
+    color: darkcyan;
+}
+
+.btn-blue:hover {
+    background-color: darkcyan;
+    color: white;
+}
+
+.btn-green {
+    color: green;
+}
+
+.btn-green:hover {
+    background-color: green;
+    color: white;
+}
+
+.flex-in-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+#routine-list {
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 30px;
+}
+
+#activities-list {
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 30px;
+}
+
+aside {
+    text-align: center;
+    grid-area: aside;
+    padding: 20px;
+}
+
+#alert-box {
+    position: fixed;
+    z-index: 2;
+    right: 10px;
+    bottom: 10px;
+    padding: 15px;
+    background-color: rgb(42, 172, 42);
+    opacity: 0;
+    color: white;
+    transition: opacity 0.3s ease-in;
+}
+
+#activity-type {
+    margin-bottom: 10px;
+}
+
+[id*="feeling-"] {
+    display: none;
+}
+
+[for*="feeling-"] {
+    font-size: 30px;
+    padding: 5px;
+    border-radius: 50%;
+    line-height: 30px;
+}
+
+[for="feeling-5"] {
+    background-color: #68c4c3;
+}
+
+#popup-div {
+    position: absolute;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+        rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+    transition: all 0.4s ease;
+}
+
+#popup-div:hover {
+    background-color: red;
+    border-color: red;
+    border-radius: 10px;
+}
+
+#popup-div:hover > .btn-clear {
+    color: white;
+}
+
+/* The Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.22);
+}
+
+.modal-content {
+    background-color: rgba(243, 243, 243, 0.637);
+    backdrop-filter: blur(2px);
+    margin: 45% auto;
+    padding: 15px;
+    padding-left: 20px;
+    padding-top: 10px;
+    border: none;
+    border-radius: 40px;
+    width: 80%;
+    overflow: hidden;
+    box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.5);
+}
+
+.modal-title {
+    color: #383838;
+    font-size: 1.3rem;
+    padding-left: 10px;
+}
+
+/* Input Design */
+.form_group {
+    position: relative;
+    padding: 15px 0 0;
+    margin-top: 10px;
+    width: 90%;
+}
+
+.form_field {
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid #9b9b9b;
+    outline: 0;
+    font-size: 1rem;
+    color: black;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+
+.form_field::placeholder {
+    color: transparent;
+}
+
+.form_field:placeholder-shown ~ .form_label {
+    font-size: 1rem;
+    cursor: text;
+    top: 20px;
+}
+
+.form_select {
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid #9b9b9b;
+    outline: 0;
+    font-size: 1rem;
+    color: black;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+
+.form_label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: #5c5c5c;
+}
+
+.form_field:focus {
+    padding-bottom: 6px;
+    border-width: 2px;
+    border-image: linear-gradient(to right, #3a1c71, #d76d77, #ffaf7b);
+    border-image-slice: 1;
+}
+
+.form_field:focus ~ .form_label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: #3a1c71;
+    font-weight: 700;
+}
+
+.form_field:required,
+.form_field:invalid {
+    box-shadow: none;
+}
+
+.form_btn {
+    margin: 5px;
+    margin-top: 10px;
+}
+
+.div-duration {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.smaller-field {
+    width: 40%;
+    align-content: center;
+}
+
+.smaller-field-select-unit {
+    width: auto;
+    margin-left: 5px;
+}
+
+.show-placeholder::placeholder {
+    color: #5c5c5c;
+}
+
+/* DATE PICKER */
+
+.datepicker-toggle {
+    position: relative;
+    width: 18px;
+    height: 19px;
+    margin-right: 10px;
+    padding-top: 7px;
+}
+
+.datepicker-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.datepicker-input::-webkit-calendar-picker-indicator {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+/* SPEECH BUBBLE */
+.box {
+    width: 50px;
+    background: #e7e7e7;
+    padding: 5px;
+    text-align: center;
+    box-shadow: transparent 0px 54px 55px, transparent 0px -12px 30px,
+        transparent 0px 4px 6px, transparent 0px 12px 13px,
+        transparent 0px -3px 5px, transparent 0px -3px 5px inset;
+}
+
+.sb4:before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-left: 10px solid transparent;
+    border-right: 10px solid #e7e7e7;
+    border-top: 10px solid #e7e7e7;
+    border-bottom: 10px solid transparent;
+    right: 19px;
+    bottom: -19px;
+    transition: all 0.4s ease;
+}
+
+.sb4:hover:before {
+    border-right-color: red;
+    border-top-color: red;
+}
+
+/* ROUTINES */
+
+.routine {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    border: solid 1px #333;
+    padding: 8px;
+    border-radius: 30px;
+    background-color: #f5e1a9;
+    background-image: url("https://www.transparenttextures.com/patterns/60-lines.png");
+    transition: all 0.3s ease;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.routine:hover {
+    filter: drop-shadow(2px 4px 6px #bf9317);
+}
+
+/* ACTIVITIES */
+
+.activity-day {
+    background-color: #b4ff4d;
+    background-image: url("https://www.transparenttextures.com/patterns/dark-geometric.png");
+    padding: 1px;
+    margin: 3px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.activity-head-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.activity-head-div-weight {
+    font-size: 1.2rem;
+    color: #303633;
+    cursor: pointer;
+}
+
+.activity-body-div-routines {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.activity-body-div-routine {
+    margin: 3px;
+    padding: 5px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.activity-body-div-routine:hover {
+    transform: scale(1.05);
+}
+
+#sources {
+    margin: 0 auto;
+    text-align: center;
+}
+
+#go-back-link {
+    font-size: 2rem;
+    padding: 10px;
+}
+
+@media screen and (min-width: 600px) {
+    main {
+        display: grid;
+        grid-template-columns: 34% 33% 33%;
+        grid-template-areas:
+            "nav nav nav"
+            "routines activities activities"
+            "aside aside aside";
+    }
+
+    .modal-content {
+        margin: 25% auto;
+        width: 60%;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    main {
+        display: grid;
+        grid-template-columns: 25% 50% 25%;
+        grid-template-areas:
+            "nav nav nav"
+            "routines activities aside";
+    }
+
+    .modal-content {
+        margin: 20% auto;
+        width: 45%;
+    }
+}
+
+@media screen and (min-width: 1250px) {
+    #activities-list {
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+
+    .modal-content {
+        margin: 15% auto;
+        width: 40%;
+    }
+}
+
+@media screen and (min-width: 1650px) {
+    #activities-list {
+        display: grid;
+        grid-template-columns: 33.3% 33.4% 33.3%;
+    }
+
+    .modal-content {
+        margin: 10% auto;
+        width: 30%;
+    }
+}
+
+span {
+    cursor: pointer;
+}

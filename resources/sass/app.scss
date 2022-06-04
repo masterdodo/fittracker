@@ -1,0 +1,23 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+
+@import "../css/app.css";
+
+@import url("https://unpkg.com/element-ui@2.15.1/lib/theme-chalk/index.css");
+
+$namespace: "xmx"; // change the 'mx' to 'xmx'. then <date-picker prefix-class="xmx" />
+
+$default-color: #555;
+$primary-color: #1284e7;
+
+@import "~vue2-datepicker/scss/index.scss";
+
+.xmx-input {
+    background-color: rgba(243, 243, 243, 0.637);
+}
